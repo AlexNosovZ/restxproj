@@ -10,6 +10,8 @@ parser.add_argument('message', type=str, help='message to send', required=True, 
 @api.route('/echo')
 class Echo(Resource):
     @api.expect(parser)
+    @api.response(200, 'OK OK')
+    @api.response(400, 'NOT VERY GOOD')
     def post(self):
         args = parser.parse_args()
         print(args)
